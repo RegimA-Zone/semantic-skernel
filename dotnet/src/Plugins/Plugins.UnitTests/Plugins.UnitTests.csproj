@@ -37,6 +37,7 @@
     <ProjectReference Include="..\Plugins.StructuredData.EntityFramework\Plugins.StructuredData.EntityFramework.csproj" />
     <ProjectReference Include="..\Plugins.Web\Plugins.Web.csproj" />
     <ProjectReference Include="..\Plugins.Memory\Plugins.Memory.csproj" />
+    <ProjectReference Include="..\Plugins.AtomSpace\Plugins.AtomSpace.csproj" />
   </ItemGroup>
 
   <ItemGroup>

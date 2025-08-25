@@ -70,27 +70,27 @@ public class MultiscaleSkinModelBuilder
         var atomsDict = atoms.OfType<SkinNode>().ToDictionary(n => n.Name, n => n);
 
         // Molecular to Cellular relationships
-        CreateLink("Contains", ScaleLevel.Cellular, atomsDict["Keratinocyte"], atomsDict["Keratin"]);
-        CreateLink("Produces", ScaleLevel.Cellular, atomsDict["Melanocyte"], atomsDict["Melanin"]);
-        CreateLink("Synthesizes", ScaleLevel.Cellular, atomsDict["Fibroblast"], atomsDict["Collagen"]);
-        CreateLink("Synthesizes", ScaleLevel.Cellular, atomsDict["Fibroblast"], atomsDict["Elastin"]);
+        atoms.Add(CreateLink("Contains", ScaleLevel.Cellular, atomsDict["Keratinocyte"], atomsDict["Keratin"]));
+        atoms.Add(CreateLink("Produces", ScaleLevel.Cellular, atomsDict["Melanocyte"], atomsDict["Melanin"]));
+        atoms.Add(CreateLink("Synthesizes", ScaleLevel.Cellular, atomsDict["Fibroblast"], atomsDict["Collagen"]));
+        atoms.Add(CreateLink("Synthesizes", ScaleLevel.Cellular, atomsDict["Fibroblast"], atomsDict["Elastin"]));
 
         // Cellular to Tissue relationships
-        CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["Keratinocyte"]);
-        CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["Melanocyte"]);
-        CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["LangerhansCell"]);
-        CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Dermis"], atomsDict["Fibroblast"]);
+        atoms.Add(CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["Keratinocyte"]));
+        atoms.Add(CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["Melanocyte"]));
+        atoms.Add(CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["LangerhansCell"]));
+        atoms.Add(CreateLink("ComprisesOf", ScaleLevel.Tissue, atomsDict["Dermis"], atomsDict["Fibroblast"]));
 
         // Tissue to Organ relationships
-        CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["Epidermis"]);
-        CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["Dermis"]);
-        CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["Hypodermis"]);
-        CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["HairFollicle"]);
+        atoms.Add(CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["Epidermis"]));
+        atoms.Add(CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["Dermis"]));
+        atoms.Add(CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["Hypodermis"]));
+        atoms.Add(CreateLink("PartOf", ScaleLevel.Organ, atomsDict["SkinSystem"], atomsDict["HairFollicle"]));
 
         // Cross-scale functional relationships
-        CreateLink("Protects", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["Dermis"]);
-        CreateLink("Supports", ScaleLevel.Tissue, atomsDict["Dermis"], atomsDict["Epidermis"]);
-        CreateLink("Insulates", ScaleLevel.Tissue, atomsDict["Hypodermis"], atomsDict["Dermis"]);
+        atoms.Add(CreateLink("Protects", ScaleLevel.Tissue, atomsDict["Epidermis"], atomsDict["Dermis"]));
+        atoms.Add(CreateLink("Supports", ScaleLevel.Tissue, atomsDict["Dermis"], atomsDict["Epidermis"]));
+        atoms.Add(CreateLink("Insulates", ScaleLevel.Tissue, atomsDict["Hypodermis"], atomsDict["Dermis"]));
     }
 
     /// <summary>
